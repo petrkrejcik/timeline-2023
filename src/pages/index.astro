@@ -1,9 +1,6 @@
 ---
-import type { Code, Debug } from "astro:components";
-import Button from "../components/Button.astro";
 import MainLayout from "../layouts/main.astro";
 import { formatDate } from "../lib/date";
-// import Post from "../layouts/post.astro";
 const allPosts = await Astro.glob("./posts/*.md");
 const sortedPosts = allPosts.sort((a, b) => {
   return a.frontmatter.pubDate < b.frontmatter.pubDate ? 1 : -1;
@@ -87,20 +84,18 @@ const sortedPosts = allPosts.sort((a, b) => {
                   class="order-1 w-5/12 hover:bg-gray-900 transition-all duration-100 p-2 rounded-md"
                 >
                   <div class:list={["px-1", "py-4"]}>
-                    <p class="mb-3 text-yellow-300" transition:name={`pubDate-${post.url}`}>
-                      {formatDate(new Date(post.frontmatter.pubDate), [{ month: "short" }, { year: "numeric" }])}
-                    </p>
-                    <h2 class="mb-3 font-bold text-lg md:text-2xl" transition:name={`title-${post.url}`}>
+                    <h2 class="mb-3 text-3xl font-extrabold md:text-2xl" transition:name={`title-${post.url}`}>
                       {post.frontmatter.title}
-                    </h2>
+                      </h2>
+                      <p class="mb-3 text-yellow-300" transition:name={`pubDate-${post.url}`}>
+                        {formatDate(new Date(post.frontmatter.pubDate), [{ month: "short" }, { year: "numeric" }])}
+                      </p>
                     <summary transition:name={`description-${post.url}`}>{post.frontmatter.description}</summary>
                     {post.frontmatter.image && (
                       <img
                         src={post.frontmatter.image.thumb}
                         alt={post.frontmatter.image.alt}
                         transition:name={`image-${post.url}`}
-                        // class:list={["mt-6", { "ml-auto": i % 2 === 0 }, { "mr-auto": i % 2 !== 0 }]}
-                        // height="320"
                       />
                     )}
                   </div>
@@ -109,10 +104,6 @@ const sortedPosts = allPosts.sort((a, b) => {
             ))
           }
         </div>
-        <!-- <img
-        class="mx-auto -mt-36 md:-mt-36"
-        src="https://user-images.githubusercontent.com/54521023/116968861-ef21a000-acd2-11eb-95ac-a34b5b490265.png"
-      /> -->
       </div>
     </div>
   </div>
