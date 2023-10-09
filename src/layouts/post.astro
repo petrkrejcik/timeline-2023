@@ -3,7 +3,6 @@ import MainLayout from "./main.astro";
 import { formatDate } from "../lib/date";
 const { content } = Astro.props;
 ---
-
 <MainLayout>
   <article class="container mx-auto justify-center">
     <h2 class="text-3xl font-extrabold" transition:name={`title-${content.url}`}>{content.title}</h2>
