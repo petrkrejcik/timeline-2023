@@ -6,10 +6,12 @@ const sortedPosts = allPosts.sort((a, b) => {
   return a.frontmatter.pubDate < b.frontmatter.pubDate ? 1 : -1;
 });
 
-// Full Astro Component Syntax:
-// https://docs.astro.build/core-concepts/astro-components/
 ---
-
+<style>
+  summary {
+    display: flex;
+  }
+</style>
 <MainLayout>
   <div class="w-full flex justify-center items-center mb-4 gap-4">
     <img
@@ -43,16 +45,8 @@ const sortedPosts = allPosts.sort((a, b) => {
     <div class="ml-0 lg:w-2/3 sticky">
       <div class="container mx-auto w-full h-full">
         <div class="relative wrap overflow-hidden h-full">
-          <div
-            class="border-2-2 border-yellow-555 absolute h-full border"
-            style="right: 50%; border: 1px solid #FFC100; border-radius: 1%;"
-          >
-          </div>
-          <div
-            class="border-2-2 border-yellow-555 absolute h-full border"
-            style="left: 50%; border: 1px solid #FFC100; border-radius: 1%;"
-          >
-          </div>
+          <div class="border-2-2 border-yellow-300 absolute h-full border  right-1/2"></div>
+          <div class="border-2-2 border-yellow-300 absolute h-full border  left-1/2"></div>
 
           {
             sortedPosts.map((post, i) => (
@@ -63,33 +57,30 @@ const sortedPosts = allPosts.sort((a, b) => {
                   "justify-between",
                   "w-full",
                   "items-center",
+                  // "hover:scale-105",
+                  "transition",
                   { "flex-row-reverse": i % 2 === 0 },
-                  { "left-timeline": i % 2 === 0 },
-                  { "right-timeline": i % 2 !== 0 },
                 ]}
               >
                 <div class="order-1 w-5/12" />
                 <div
-                  class="order-1 border-2-2 border-yellow-555 w-1/12 border"
+                  class="order-1 border-2-2 border-yellow-300 w-1/12 border"
                   style={{
-                    border: "1px solid #FFC100",
-                    "border-radius": "1%",
                     "margin-right": i % 2 === 0 ? "9%" : 0,
                     "margin-left": i % 2 !== 0 ? "9%" : 0,
                   }}
                 />
                 <a
                   href={post.url}
-                  style="block"
-                  class="order-1 w-5/12 hover:bg-gray-900 transition-all duration-100 p-2 rounded-md"
+                  class="order-1 w-5/12 hover:bg-gray-900 transition-all duration-100 p-2 rounded-md block"
                 >
                   <div class:list={["px-1", "py-4"]}>
                     <h2 class="mb-3 text-3xl font-extrabold md:text-2xl" transition:name={`title-${post.url}`}>
                       {post.frontmatter.title}
-                      </h2>
-                      <p class="mb-3 text-yellow-300" transition:name={`pubDate-${post.url}`}>
-                        {formatDate(new Date(post.frontmatter.pubDate), [{ month: "short" }, { year: "numeric" }])}
-                      </p>
+                    </h2>
+                    <p class="mb-3 text-yellow-300" transition:name={`pubDate-${post.url}`}>
+                      {formatDate(new Date(post.frontmatter.pubDate), [{ month: "short" }, { year: "numeric" }])}
+                    </p>
                     <summary transition:name={`description-${post.url}`}>{post.frontmatter.description}</summary>
                     {post.frontmatter.image && (
                       <img
