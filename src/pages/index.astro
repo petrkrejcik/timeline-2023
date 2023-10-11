@@ -5,8 +5,8 @@ const allPosts = await Astro.glob("./posts/*.md");
 const sortedPosts = allPosts.sort((a, b) => {
   return a.frontmatter.pubDate < b.frontmatter.pubDate ? 1 : -1;
 });
-
 ---
+
 <style>
   summary {
     display: flex;
@@ -45,8 +45,8 @@ const sortedPosts = allPosts.sort((a, b) => {
     <div class="ml-0 lg:w-2/3 sticky">
       <div class="container mx-auto w-full h-full">
         <div class="relative wrap overflow-hidden h-full">
-          <div class="border-2-2 border-yellow-300 absolute h-full border  right-1/2"></div>
-          <div class="border-2-2 border-yellow-300 absolute h-full border  left-1/2"></div>
+          <div class="border-2-2 border-yellow-300 absolute h-full border right-1/2"></div>
+          <div class="border-2-2 border-yellow-300 absolute h-full border left-1/2"></div>
 
           {
             sortedPosts.map((post, i) => (
@@ -75,13 +75,11 @@ const sortedPosts = allPosts.sort((a, b) => {
                   class="order-1 w-5/12 hover:bg-gray-900 transition-all duration-100 p-2 rounded-md block"
                 >
                   <div class:list={["px-1", "py-4"]}>
-                    <h2 class="mb-3 text-3xl font-extrabold md:text-2xl" transition:name={`title-${post.url}`}>
-                      {post.frontmatter.title}
-                    </h2>
-                    <p class="mb-3 text-yellow-300" transition:name={`pubDate-${post.url}`}>
+                    <h2 class="mb-3 text-3xl font-extrabold md:text-2xl">{post.frontmatter.title}</h2>
+                    <p class="mb-3 text-yellow-300">
                       {formatDate(new Date(post.frontmatter.pubDate), [{ month: "short" }, { year: "numeric" }])}
                     </p>
-                    <summary transition:name={`description-${post.url}`}>{post.frontmatter.description}</summary>
+                    <summary>{post.frontmatter.description}</summary>
                     {post.frontmatter.image && (
                       <img
                         src={post.frontmatter.image.thumb}
