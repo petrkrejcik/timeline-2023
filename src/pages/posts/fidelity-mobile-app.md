@@ -10,7 +10,7 @@ image:
 tags: ["Javascript", "React Native", "React Native Paper", "Expo", "Firebase", "Cypress", "Sentry"]
 ---
 
-<p class="text-yellow-300">
+<p class="text-primary">
   <a href="https://play.google.com/store/apps/details?id=es.soincon.fidelity" target="_blank">Google Play</a> /
   <a href="https://apps.apple.com/us/app/ien-fidelity/id1577265425" target="_blank">Apple Store</a>
 </p>

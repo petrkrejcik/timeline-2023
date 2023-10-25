@@ -23,7 +23,7 @@ const sortedPosts = allPosts.sort((a, b) => {
     />
     <div class="">
       <h1 class="text-4xl mb-2">
-        Hi, I'm <span class="text-yellow-300">Petr</span>.
+        Hi, I'm <span class="text-primary">Petr</span>.
       </h1>
       <p>I'm a developer and this is what I've done.</p>
       <a href="https://www.linkedin.com/in/petrkrejcik" style="block" target="_blank">
@@ -45,8 +45,8 @@ const sortedPosts = allPosts.sort((a, b) => {
     <div class="ml-0 lg:w-2/3 sticky">
       <div class="container mx-auto w-full h-full">
         <div class="relative wrap overflow-hidden h-full">
-          <div class="border-2-2 border-yellow-300 absolute h-full border right-1/2"></div>
-          <div class="border-2-2 border-yellow-300 absolute h-full border left-1/2"></div>
+          <div class="border-2-2 border-primary absolute h-full border right-1/2"></div>
+          <div class="border-2-2 border-primary absolute h-full border left-1/2"></div>
 
           {
             sortedPosts.map((post, i) => (
@@ -64,7 +64,7 @@ const sortedPosts = allPosts.sort((a, b) => {
               >
                 <div class="order-1 w-5/12" />
                 <div
-                  class="order-1 border-2-2 border-yellow-300 w-1/12 border"
+                  class="order-1 border-2-2 border-primary w-1/12 border"
                   style={{
                     "margin-right": i % 2 === 0 ? "9%" : 0,
                     "margin-left": i % 2 !== 0 ? "9%" : 0,
@@ -75,8 +75,8 @@ const sortedPosts = allPosts.sort((a, b) => {
                   class="order-1 w-5/12 hover:bg-gray-900 transition-all duration-100 p-2 rounded-md block"
                 >
                   <div class:list={["px-1", "py-4"]}>
-                    <h2 class="mb-3 text-3xl font-extrabold md:text-2xl">{post.frontmatter.title}</h2>
-                    <p class="mb-3 text-yellow-300">
+                    <h2 class="mb-3 text-3xl font-extrabold md:text-2xl text-white" >{post.frontmatter.title}</h2>
+                    <p class="mb-3 text-primary">
                       {formatDate(new Date(post.frontmatter.pubDate), [{ month: "short" }, { year: "numeric" }])}
                     </p>
                     <summary>{post.frontmatter.description}</summary>
